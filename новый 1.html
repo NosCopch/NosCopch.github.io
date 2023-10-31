@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Фастфуд</title>
+    <style>
+        .product {
+            display: inline-block;
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition-duration: 0.4s;
+        }
+
+        .product:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .product img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+
+        .product .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+
+        .product .button:hover {
+            background-color: #008CBA;
+        }
+
+        .product .button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Меню фастфуда</h1>
+
+    <div class="product">
+        <img src="hamburger.jpg" alt="Гамбургер">
+        <p>Гамбургер - 150 руб.</p>
+        <button class="button" onclick="sendNotification('Гамбургер', '150 руб.')">Заказать</button>
+    </div>
+
+    <div class="product">
+        <img src="cheeseburger.jpg" alt="Чизбургер">
+        <p>Чизбургер - 200 руб.</p>
+        <button class="button" onclick="sendNotification('Чизбургер', '200 руб.')">Заказать</button>
+    </div>
+
+    <div class="product">
+        <img src="french_fries.jpg" alt="Картофель фри">
+        <p>Картофель фри - 100 руб.</p>
+        <button class="button" onclick="sendNotification('Картофель фри', '100 руб.')">Заказать</button>
+    </div>
+
+    <div class="product">
+        <img src="cola.jpg" alt="Кола">
+        <p>Кола - 50 руб.</p>
+        <button class="button" onclick="sendNotification('Кола', '50 руб.')">Заказать</button>
+    </div>
+
+    <script>
+        function sendNotification(item, price) {
+            // Добавьте код для отправки уведомления о заказе в телеграм-боте
+            // Здесь вы можете использовать JavaScript или любую другую технологию для отправки данных к API телеграм-бота
+            // Подставьте свои данные вместо 'YOUR_BOT_TOKEN' и 'YOUR_CHAT_ID'
+            var botToken = '6628987818:AAFuWH_CTCf41d_qF8PvW0eX3bCErwNZTXs'; // Токен вашего телеграм-бота
+            var chatId = '1162980526'; // ID вашего чата
+
+            // Формируем текст уведомления
+            var message = 'Заказ: ' + item + '\nЦена: ' + price;
+
+            // Отправляем запрос к API телеграм-бота
+            var request = new XMLHttpRequest();
+            var url = 'https://api.telegram.org/bot' + botToken + '/sendMessage?chat_id=' + chatId + '&text=' + encodeURIComponent(message);
+            request.open('GET', url, true);
+            request.send(null);
+
+            alert('Заказ принят!'); // Выводим уведомление на странице
+        }
+    </script>
+</body>
+</html>
